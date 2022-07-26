@@ -1,37 +1,45 @@
-import React from 'react'
-import { Card } from 'react-bootstrap'
+import React from "react";
+import { Card, Form } from "react-bootstrap";
+import "./Element.css";
+import { Link } from "react-router-dom";
+import Rating from "./Rating";
 
-import { Link } from 'react-router-dom'
-import Rating from './Rating'
-
-const Element = ({product}) => {
-  console.log("first", product)
+const Element = ({ product }) => {
   return (
-    <Card className=' my-3 p-3 rounded'>
-        <Link to={`/product/${product.id}`}>
-           <Card.Img src={product.image} variant='top'></Card.Img>
-        </Link>
-        
+    <div className="cards">
+      {/* <Link to={`/product/${product.id}`}>
+           <Card.Img  src={product.image} variant='top'></Card.Img>
+        </Link> */}
 
-         <Card.Body>
-           <Link to={`/product/${product.id}`}>
+      <a href={`/product/${product.id}`}>
+        <img src={product.image} className="image" />
+      </a>
+
+      <div className="cards-body">
+        {/* <Link to={`/product/${product.id}`}>
              <Card.Title as='div'>
                   <strong>{product.title}</strong>
              </Card.Title>
-           </Link>
-           
+           </Link> */}
 
-            <Card.Text as='div'>
-                <Rating value={product?.rating?.rate} text={`${product?.rating?.count} reviews`} color ='#B2FFFF'/>
-                
-            </Card.Text>
-            <Card.Text as='h3'>${product.price}</Card.Text>
-         </Card.Body>
+        <a href={`/product/${product.id}`} className="title">
+          <strong>{product.title}</strong>
+        </a>
 
+        <div className="rating">
+          <Rating
+            value={product?.rating?.rate}
+            text={`${product?.rating?.count} reviews`}
+            color="#B2FFFF"
+          />
+        </div>
 
+        {/* <Card.Text as='h3'>${product.price}</Card.Text> */}
 
-    </Card>
-  )
-}
+        <h3 className="price">${product.price}</h3>
+      </div>
+    </div>
+  );
+};
 
-export default Element
+export default Element;

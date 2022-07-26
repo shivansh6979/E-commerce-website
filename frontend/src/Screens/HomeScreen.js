@@ -1,38 +1,50 @@
-import React from 'react'
-import products from '../products'
-import { Row, Col} from 'react-bootstrap'
-import Element from '../Components/Element'
-import { useState,useEffect} from 'react'
-import axios from 'axios'
+import React from "react";
+import { Row, Col } from "react-bootstrap";
+import Element from "../Components/Element";
+import { useEffect } from "react";
+import Spinner from "react-bootstrap/Spinner";
+import { useDispatch, useSelector } from "react-redux";
+import { listProducts } from "../actions/ProductAction";
 
 const HomeScreen = () => {
+  const dispatch = useDispatch();
+  const productList = useSelector((state) => state.ProductList);
+  const { loading, error, products } = productList;
 
-  const [products,setProducts] =useState([])
+  useEffect(() => {
+    dispatch(listProducts());
+  }, [dispatch]);
 
-  useEffect(() =>{
-    const fetchProducts = async () =>{
-    const {data} = await axios.get('https://fakestoreapi.com/products')
-      setProducts(data)
-    }
-       fetchProducts()
-  },[])
-
-console.log('products',products)
   return (
     <>
-    <h1>Latest Products</h1>
-    <Row>
-         {products.map(product =>{ 
-            return(
-            <Col sm={12} mg={6} lg={4} xl={3}>
-              <Element product={product}/>
-            </Col>
-         )})}
+      <h1>Latest Products</h1>
+      {loading ? (
+        <Spinner
+          animation="grow"
+          variant="light"
+          role="status"
+          style={{
+            width: "100px",
+            height: "100px",
+            margin: "auto",
+            display: "block",
+          }}
+        />
+      ) : error ? (
+        <h3>{error}</h3>
+      ) : (
+        <Row>
+          {products.map((product) => {
+            return (
+              <Col sm={12} mg={6} lg={4} xl={3} key={product.id}>
+                <Element product={product} />
+              </Col>
+            );
+          })}
+        </Row>
+      )}
+    </>
+  );
+};
 
-    </Row>
-
-    </> 
-  )
-}
-
-export default HomeScreen
+export default HomeScreen;
