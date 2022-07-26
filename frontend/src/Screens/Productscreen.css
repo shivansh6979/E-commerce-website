@@ -8,8 +8,6 @@
   width: 100%;
   height: auto;
   border-radius: 20px;
-
-  /* margin-left: -210px; */
 }
 
 .column-feature {
@@ -20,7 +18,7 @@
   .column-feature {
     display: grid;
     grid-template-columns: 1fr;
-    /* margin-left: 190px; */
+
     margin-bottom: 20px;
   }
 
@@ -28,7 +26,6 @@
     margin-bottom: 20px;
     width: 100%;
     height: 290px;
-    /* margin-left: 65px; */
   }
 
   .product-price {
