@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import FormContainer from "../Components/FormContainer";
-import Message from "../Components/Message";
+import FormContainer from "../components/FormContainer";
+import Message from "../components/Message";
 
 const RegisterScreen = () => {
   const [name, setName] = useState("");

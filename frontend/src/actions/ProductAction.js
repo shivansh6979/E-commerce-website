@@ -5,9 +5,9 @@ import {
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAILURE,
-} from "../Constants/ProductListConstants";
+} from "../constants/ProductListConstants";
 import axios from "axios";
-import { BASE_URL } from "../Constants/helper";
+import { BASE_URL } from "../constants/helper";
 
 export const listProducts = () => async (dispatch) => {
   try {

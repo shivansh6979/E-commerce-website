@@ -1,17 +1,9 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import {
-  Row,
-  Col,
-  Image,
-  ListGroup,
-  Card,
-  Button,
-  ListGroupItem,
-} from "react-bootstrap";
+import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "react-bootstrap/Spinner";
-import Rating from "../Components/Rating";
+import Rating from "../components/Rating";
 import "./Productscreen.css";
 
 import { useParams } from "react-router-dom";
